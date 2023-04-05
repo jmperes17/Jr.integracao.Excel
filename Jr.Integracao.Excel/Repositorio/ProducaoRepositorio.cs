@@ -20,40 +20,13 @@ namespace Jr.Integracao.Excel.Repositorio
             return dto;
         }
 
-        public async Task<Producao> BuscarPorId(long id)
-        {
-            Producao producao = await _context.Producoes.Where(p => p.Id == id).FirstOrDefaultAsync() ?? new Producao();
-            return producao;
-        }
-
-        public async Task<IEnumerable<Producao>> BuscarTodos()
-        {
-            List<Producao> products = await _context.Producoes.ToListAsync();
-            return products;
-        }
-
-        public async Task<Producao> Criar(Producao dto)
+        public async Task<Producao> Insert(Producao dto)
         {
             _context.Producoes.Add(dto);
             await _context.SaveChangesAsync();
             return dto;
         }
 
-        public async Task<bool> Deletar(long id)
-        {
-            try
-            {
-                Producao producao = await _context.Producoes.Where(p => p.Id == id).FirstOrDefaultAsync() ?? new Producao();
-                if (producao.Id <= 0) return false;
-                _context.Producoes.Remove(producao);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
+       
     }
 }
