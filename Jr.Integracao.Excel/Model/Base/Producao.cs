@@ -109,7 +109,8 @@ namespace Jr.Integracao.Excel.Model.Base
         public double DownTime { get; set; }
 
 
-
     }
+
+
 
 }
